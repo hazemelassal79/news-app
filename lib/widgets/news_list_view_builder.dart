@@ -18,7 +18,8 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
   void initState() {
     super.initState();
     future = NewsService(Dio()).getNews(
-        category:widget.category); //to access NewsListViewBuilder StatefulWidget
+        category:
+            widget.category); //to access NewsListViewBuilder StatefulWidget
   }
 
   @override
@@ -27,6 +28,17 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
         future: future, //request
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            if (snapshot.data!.isEmpty) {
+              return SliverToBoxAdapter(
+                  child: Center(
+                      child: Text(
+                "there is no data",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20),
+              )));
+            }
             return NewsListView(articels: snapshot.data!);
           } else if (snapshot.hasError) {
             return SliverToBoxAdapter(

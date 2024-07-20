@@ -32,10 +32,10 @@ class NewsData extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(height: 12),
+          SizedBox(height: 8),
           Text(
             articleModel.title ?? "",
-            maxLines: 10,
+            maxLines: 20,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: Colors.black,
@@ -46,7 +46,7 @@ class NewsData extends StatelessWidget {
           SizedBox(height: 8),
           Text(
             articleModel.subTitle ?? "",
-            maxLines: 10,
+            maxLines: 20,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: Colors.grey,
